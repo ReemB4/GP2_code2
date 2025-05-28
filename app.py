@@ -127,8 +127,8 @@ def get_all_patients():
     return df_highest_visit
 
 @app.route('/')
-def base():
-    return render_template('base.html')
+def index():
+    return render_template('index.html')
 
 @app.route('/login')
 def login():
@@ -199,7 +199,7 @@ def authenticate():
         return render_template('login.html',Invalid_user=Invalid_user)
     else:
         con.close()
-        return render_template('base.html')
+        return render_template('index.html')
 
 
 @app.route('/home')
@@ -264,7 +264,7 @@ def view_patient():
         msg = 'Error: try again'
         patients = get_all_patients().to_dict(orient='records')
         #print(2)
-        return render_template('base.html', patients=patients, msg=msg )
+        return render_template('index.html', patients=patients, msg=msg )
     
 
     patient_pro_info, patient_pep_info, patient_sco_info, pro_list, pep_list= patient_info(patient_id)
@@ -631,7 +631,7 @@ def compare_visits():
 
         patients = get_all_patients().to_dict(orient='records')
     else:
-        return redirect('base.html', patients=patients)
+        return redirect('index.html', patients=patients)
 
     return render_template('compare_visits.html',patient_id=patient_id, visit_months=visit_months, roleP=roleP)
     
@@ -1393,7 +1393,7 @@ def peptide_info():
 
     patients = get_all_patients().to_dict(orient='records')
     #print(2)
-    return render_template('base.html', patients=patients)
+    return render_template('index.html', patients=patients)
 
 
 
@@ -1627,7 +1627,7 @@ def predict_next_visit():
 
         if not patient_id:
             if roleP:
-                return render_template('base.html', patients=patients)
+                return render_template('index.html', patients=patients)
             patients = get_all_patients().to_dict(orient='records')
             return render_template('doctor_base.html', patients=patients)
 
@@ -1758,7 +1758,7 @@ def predict_next_visit():
         
     else:
         if roleP:
-            return render_template('base.html')
+            return render_template('index.html')
         msg = 'Error: try again'
         patients = get_all_patients().to_dict(orient='records')
         #print(2)

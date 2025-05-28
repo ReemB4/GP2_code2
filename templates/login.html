@@ -130,7 +130,7 @@
                 <p><strong>Error:</strong> Invalid Username or Password </p>
             </div>
     {% endif %}
-    <a href="{{ url_for('base') }}"> <img src="{{ url_for('static', filename='images/logo.jpg' )}}" alt="logo" alt="PDPrognosis Logo" /> </a>
+    <a href="{{ url_for('index') }}"> <img src="{{ url_for('static', filename='images/logo.jpg' )}}" alt="logo" alt="PDPrognosis Logo" /> </a>
     <h2>Log In</h2>
     <form action="/authenticate" method="post">
       <label for="username">Username</label>
